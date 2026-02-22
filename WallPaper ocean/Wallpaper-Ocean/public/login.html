@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Ocean - Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url('empty-road-dark-atmosphere_23-2150914302.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: black;
+    }
+
+    .navbar img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .navbar h1 {
+        font-size: 24px;
+        margin: 0;
+        color: red;
+    }
+
+    .navbar input[type="text"] {
+        margin-left: auto;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .navbar a {
+        margin: 0 10px;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .navbar a:hover {
+        color: red;
+    }
+
+    .signup-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .signup-box {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+    }
+
+    .signup-box h2 {
+        margin-bottom: 20px;
+    }
+
+    .signup-box input[type="text"],
+    .signup-box input[type="password"] {
+        width: 100%;
+        padding: 6px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .signup-box button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer; 
+    }
+
+    .signup-box button:hover {
+        background-color: #0056b3; 
+    }
+
+    .signup-box .login-link {
+        color: white;
+        margin-top: 10px;
+    }
+
+    .signup-box .login-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .signup-box .social-login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signup-box .social-login button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+    }
+
+    .signup-box .social-login .facebook {
+        background-color: #3b5998;
+        color: white;
+    }
+
+    .signup-box .social-login .google {
+        background-color: white;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .signup-box .social-login .google img {
+        height: 20px;
+        margin-right: 10px;
+    }
+</style>
+<body>
+    <script src="webdev.js"></script>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="cover.html"><img src="Screenshot 2024-09-30 191300.png" alt="Logo" height="40" width="40" /></a>
+        <h1><a href="cover.html" style="color: #ff0000; text-decoration: none;">Wallpaper Ocean</a></h1>
+        <input type="text" id="searchInput" placeholder="Search" />
+        <a href="cars.html">CARS</a>
+        <a href="animals.html">ANIMALS</a>
+        <a href="art.html">ART</a>
+        <a href="nature.html">NATURE</a>
+    </div>
+
+    <!-- Login Section -->
+    <div class="signup-container">
+        <div class="signup-box">
+            <h2>LOGIN</h2>
+            <form id="loginForm">
+                <input type="text" name="email" id="email" placeholder="Email" required />
+                <input type="password" name="password" id="password" placeholder="Password" required />
+                <div class="login-link">
+                    <a href="#" onclick="forgotPassword()">Forgot password?</a>
+                </div>
+                <button type="submit">LOGIN</button>
+                <p>Don't have an account? <a href="signup.html">Signup</a></p>
+                <div class="social-login">
+                    <button type="button" class="facebook" onclick="openFacebookLogin()"><i class="fab fa-facebook-f"></i> Login with Facebook</button>
+                    <button type="button" class="google" onclick="openGoogleLogin()">
+                        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-PoBSP89RqOu3uRQWWogjvi6t.png" alt="Google Logo" width="20" />
+                        Login with Google
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Email and Password Validation Script -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission to handle validation first
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Validate Email
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            // Validate Password Length
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return;
+            }
+
+            // Redirect to cars.html if both validations pass
+            window.location.href = 'cars.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites - Wallpaper Ocean</title>
+    <link rel="stylesheet" href="design.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="cover.html">
+                <img src="Screenshot 2024-09-30 191300.png" alt="Wallpaper Ocean Logo" class="logo-image">
+            </a>
+            <h1><a href="cover.html">Wallpaper Ocean</a></h1>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div class="auth-buttons">
+            <button class="login-btn" onclick="window.location.href='login.html';">Login</button>
+            <button class="signup-btn" onclick="window.location.href='signup.html';">Signup</button>
+        </div>
+    </header>
+
+    <nav>
+        <button class="nav-btn" onclick="window.location.href='animals.html';">Animals</button>
+        <button class="nav-btn" onclick="window.location.href='cars.html';">Cars</button>
+        <button class="nav-btn" onclick="window.location.href='art.html';">Art</button>
+        <button class="nav-btn" onclick="window.location.href='nature.html';">Nature</button>
+    </nav>
+
+    <!-- Category Dropdown -->
+    <section class="category-filter">
+        <label for="categorySelect">Select Category: </label>
+        <select id="categorySelect">
+            <option value="all">All</option>
+            <option value="animals">Animals</option>
+            <option value="cars">Cars</option>
+            <option value="art">Art</option>
+            <option value="nature">Nature</option>
+        </select>
+    </section>
+
+    <!-- Favorite Wallpapers Grid -->
+    <section class="wallpaper-grid" id="favoritesGrid">
+        <!-- Dynamically populated favorites will go here -->
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@wallpaperocean.com</p>
+                <p>Phone: +1 800 123 4567</p>
+            </div>
+            <div class="about">
+                <h3>About Us</h3>
+                <p>Your ultimate destination for stunning high-resolution wallpapers!</p>
+            </div>
+            <div class="socials">
+                <h3>Follow Us</h3>
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Wallpaper Ocean. All rights reserved.</p>
+        </div>
+    </footer>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Wallpaper Image">
+        <div class="lightbox-text" id="lightbox-name"></div>
+        <div class="lightbox-buttons">
+            <button class="action-btn" onclick="downloadImage()">Download</button>
+            <button class="action-btn" onclick="removeFromFavorites(lightboxSrc)">Remove from Favorites</button>
+            <button class="action-btn" onclick="saveToCart(lightboxSrc)">Save to Cart</button>
+        </div>
+    </div>
+</div>
+   
+
+    <script>
+        // Sample data for favorites
+        const favorites = {
+            animals: [
+                { src: "IMG-20240930-WA0011.jpg", name: "Animal 1" },
+                { src: "IMG-20240930-WA0010.jpg", name: "Animal 2" }
+            ],
+            cars: [
+                { src: "IMG-20240930-WA0004.jpg", name: "Car 1" },
+                { src: "wallpaper-car-wallpapers-v0-k5y4ka5av7qd1.webp", name: "Car 2" }
+            ],
+            art: [
+                { src: "WhatsApp Image 2024-09-30 at 20.24.25_96f354bb.jpg", name: "Art 1" },
+                { src: "download.jpg", name: "Art 2" }
+            ],
+            nature: [
+                { src: "download (1).jpg", name: "Nature 1" },
+                { src: "WhatsApp Image 2024-09-30 at 20.27.38_dc7a9917.jpg", name: "Nature 2" }
+            ]
+        };
+    
+        let lightboxSrc = '';
+    
+        // Function to populate the favorites grid based on selected category
+        function updateFavorites(category = 'all') {
+            const grid = document.getElementById('favoritesGrid');
+            grid.innerHTML = '';
+    
+            let imagesToShow = [];
+            if (category === 'all') {
+                imagesToShow = [].concat(...Object.values(favorites));
+            } else if (favorites[category]) {
+                imagesToShow = favorites[category];
+            }
+    
+            imagesToShow.forEach(favorite => {
+                const wallpaperItem = document.createElement('div');
+                wallpaperItem.classList.add('wallpaper-item');
+                wallpaperItem.innerHTML = `
+                    <img src="${favorite.src}" alt="${favorite.name}" class="wallpaper-image" onclick="openLightbox('${favorite.src}', '${favorite.name}')">
+                    <p class="wallpaper-name">${favorite.name}</p>
+                    <button class="remove-from-favorites-btn" onclick="removeFromFavorites('${favorite.src}')">Remove from favorites</button>
+                `;
+                grid.appendChild(wallpaperItem);
+            });
+        }
+    
+        // Function to open lightbox
+        function openLightbox(src, name) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxName = document.getElementById('lightbox-name');
+    
+            lightboxSrc = src;
+            lightboxImg.src = src;
+            lightboxName.textContent = name;
+    
+            lightbox.style.display = 'flex';
+        }
+    
+        // Function to close lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    
+        // Function to download image
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.href = lightboxSrc;
+            link.download = 'downloaded_wallpaper.jpg';
+            link.click();
+        }
+    
+        // Function to remove wallpaper from favorites
+        function removeFromFavorites(src) {
+            for (let category in favorites) {
+                favorites[category] = favorites[category].filter(fav => fav.src !== src);
+            }
+            updateFavorites(document.getElementById('categorySelect').value);
+            alert('Wallpaper removed from your Favorites list!');
+            closeLightbox();
+        }
+    
+        // Function to save wallpaper to cart (for future use)
+        function saveToCart(src) {
+            alert('Wallpaper saved to cart!');
+            closeLightbox();
+        }
+    
+        // Initialize page with 'all' category
+        updateFavorites('all');
+    
+        // Event listener for category selection
+        document.getElementById('categorySelect').addEventListener('change', (event) => {
+            updateFavorites(event.target.value);
+        });
+    </script>
+
+</body>
+</html>

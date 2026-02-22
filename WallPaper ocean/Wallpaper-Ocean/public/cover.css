@@ -1,0 +1,279 @@
+/* General Reset and Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-bg: rgba(34, 34, 34, 0.8);
+    --accent-red: red;
+    --accent-blue: blue;
+    --text-color: #fff;
+    --bg-color: #222;
+    --hover-blue: #0056b3;
+    --transition: 0.3s ease-in-out;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url(landscape-mountains-black-white_119272-41.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--main-bg);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 2em;
+    color: var(--accent-red);
+    font-family: 'Lucida Sans', sans-serif;
+}
+
+/* Search Bar */
+.search-bar input {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+/* Auth Buttons */
+.auth-buttons button {
+    background-color: var(--accent-red);
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.auth-buttons button:hover {
+    background-color: #cc0000;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    position: relative;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; /* Remove underline */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: var(--transition);
+    display: inline-block;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background-color: var(--accent-red);
+}
+
+/* Dropdown Menu Container */
+.dropdown {
+    position: absolute;
+    right: 0; /* Align dropdown to the right corner */
+    display: inline-block;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #08b2dd;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+/* Dropdown Button Hover Effect */
+.dropbtn:hover {
+    background-color: var(--accent-red);
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; /* Align dropdown content to the right corner */
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    min-width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show Dropdown on Hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 70px;
+}
+
+.hero h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.cta-btn {
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.cta-btn:hover {
+    background-color: var(--hover-blue);
+}
+
+/* Wallpaper Grid */
+.wallpaper-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.wallpaper-grid img {
+    width: 200px;
+    height: 300px;
+    border-radius: 15px;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.wallpaper-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-color);
+    padding: 20px;
+    color: var(--text-color);
+    margin-top: 200px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-content div {
+    flex: 1;
+}
+
+.socials a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: var(--transition);
+}
+
+.socials a:hover {
+    color: var(--accent-red);
+}
+
+footer .copyright {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.5em;
+    }
+
+    .auth-buttons button {
+        padding: 8px 15px;
+    }
+
+    .wallpaper-grid img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    .dropdown {
+        position: relative;
+        right: auto;
+    }
+
+    .cta-btn {
+        width: 100%;
+    }
+}
+

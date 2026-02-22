@@ -1,0 +1,411 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #222;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 2em;
+    color: red;
+    font-family: 'Lucida Sans', sans-serif;
+}
+
+.logo a {
+    text-decoration: none;
+    color: red;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.search-bar input:focus {
+    background-color: #333;
+}
+
+.auth-buttons button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-buttons button:hover {
+    background-color: darkred;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.nav-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; /* Remove underline */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: var(--transition);
+    display: inline-block;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background-color: var(--accent-red);
+}
+
+.nav-btn:hover {
+    background-color: var(--accent-red);
+}
+
+/* Dropdown Menu Container */
+.dropdown {
+    position: absolute;
+    right: 0; /* Align dropdown to the right corner */
+    display: inline-block;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+/* Dropdown Button Hover Effect */
+.dropbtn:hover {
+    background-color: var(--accent-red);
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; /* Align dropdown content to the right corner */
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    min-width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show Dropdown on Hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Category Filter */
+.category-filter {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Wallpaper Grid Styles */
+.wallpaper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 30px; 
+    padding: 20px;
+}
+
+.wallpaper-item {
+    position: relative;
+    margin: 15px;
+    text-align: center; 
+}
+
+.wallpaper-name {
+    margin-top: 10px; 
+    font-size: 16px;
+    font-weight: bold;
+    color: #494949;
+}
+
+.wallpaper-grid img {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.wallpaper-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Download Button */
+.download-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-content div {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.socials a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.socials a:hover {
+    color: red;
+}
+
+footer .copyright {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo h1 {
+        font-size: 1.5em;
+    }
+
+    .auth-buttons button {
+        padding: 8px 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wallpaper-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    }
+
+    .wallpaper-grid img {
+        height: 180px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .wallpaper-grid img {
+        height: 150px;
+    }
+
+    .download-btn {
+        font-size: 0.9em;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Lightbox Styles */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox-content {
+    position: relative;
+    text-align: center;
+}
+
+.lightbox-text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#lightbox-img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.lightbox-buttons {
+    margin-top: 20px;
+}
+
+.action-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: #45a049;
+}
+
+/* Download Button */
+.download-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
+
+/* Remove from Favorites Button */
+.remove-from-favorites-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336; /* Red color to indicate removal */
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.remove-from-favorites-btn:hover {
+    background-color: #e53935; /* Slightly darker red on hover */
+}
+
